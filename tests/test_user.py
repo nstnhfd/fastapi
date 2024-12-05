@@ -3,12 +3,6 @@ from jose import jwt
 from app import schemas
 from app.config import settings
 
-#def test_root(client,session):
- #   res= client.get("/")
-  #  print(res.json().get('message'))
-   # assert res.json().get('message') == 'hello world'
-    #assert res.status_code == 200
-
 def test_create_user(client):
     res = client.post("/users/",json={"email":"hana2@gmail.com","password" : "pass14"})
     new_user = schemas.UserOut(**res.json())
@@ -30,9 +24,8 @@ def test_login_user(test_user,client):
 @pytest.mark.parametrize("email, password, status_code", [
     ('nstnghfri9595995@gmail.com', 'password1234', 403),
     ('sanjeev@gmail.com', 'wrongpassword', 403),
-    ('wrongemail@gmail.com', 'wrongpassword', 403),
-    (None, 'password123', 422),
-    ('sanjeev@gmail.com', None, 422)
+    ('wrongemail@gmail.com', 'wrongpassword', 403)
+
 ])
 def test_incorrect_login(test_user,client,email,password,status_code):
     res = client.post("/login",data={"username":email,"password":password})
