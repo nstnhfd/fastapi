@@ -1,0 +1,27 @@
+#YAML is a markup language that's commonly used for configuration files.
+name: Build and Deploy Code
+on: [push,pull_request]
+
+jobs: 
+  job1:
+    runs-on: windows-10
+    steps:
+      - name: pulling git rep
+        uses: actions/checkout@v2
+      - name: say hi to nstnghfri
+        run: echo "hello nstnghfri"
+        
+
+
+
+
+
+
+
+  # push:
+  #   branches: 
+  #     - "main"
+  #     - "anotherbranch"
+  # pull-request:
+  #   branches: 
+  #     - "test-branch"

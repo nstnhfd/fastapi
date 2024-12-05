@@ -11,7 +11,7 @@ from .config import Settings
 #models.Base.metadata.create_all(bind=engine)
 
 app=FastAPI()
-origins = ["https://www.google.com"]
+origins = ["*"]
 #which domain can talk to our api
 app.add_middleware(
     CORSMiddleware,
@@ -29,6 +29,6 @@ app.include_router(vote.router)
 #request get method url : "/".
 @app.get("/")
 def root():
-    return {"message": "wellcome to my api"}
+    return {"message": "hello world"}
 
 
